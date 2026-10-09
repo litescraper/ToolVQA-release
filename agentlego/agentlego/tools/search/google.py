@@ -167,7 +167,7 @@ class GoogleSearch(BaseTool):
         params['q'] = query
 
         response = requests.post(
-            f'https://google.serper.dev/{search_type}',
+            f'{os.getenv("SERPER_BASE_URL", "https://google.serper.dev").rstrip("/")}/{search_type}',
             headers=headers,
             params=params,
             timeout=self.timeout)
